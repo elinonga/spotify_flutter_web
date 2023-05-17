@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: const Center(
         child: Text(
-          "This is Spotify web",
+          "This is Spotify web!",
         ),
       ),
     );
