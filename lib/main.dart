@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_flutter_web/constants.dart';
 import 'package:spotify_flutter_web/widgets/bottom/player.dart';
+import 'package:spotify_flutter_web/widgets/sidebar/artists/artist.dart';
+import 'package:spotify_flutter_web/widgets/sidebar/header/header_sidebar.dart';
+import 'package:spotify_flutter_web/widgets/sidebar/middle/middle_sidebar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,99 +46,20 @@ class _MyHomePageState extends State<MyHomePage> {
           return Row(
             children: [
               // Sidebar Container
-              Expanded(
+              const Expanded(
                 flex: 4,
                 child: SizedBox(
                   height: double.infinity,
                   child: Column(
                     children: [
                       // First Container
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 10.0,
-                          top: 10.0,
-                          bottom: 10.0,
-                        ),
-                        child: Container(
-                          height: 100,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: kColumnCardsColor,
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(10.0),
-                            ),
-                            border: Border.all(
-                              color: Colors.grey,
-                              width: 0.5,
-                            ),
-                          ),
-                          child: const Text(
-                            "Kushoto",
-                            style: TextStyle(
-                              color: kTextMinorColor,
-                            ),
-                          ),
-                        ),
-                      ),
+                      SidebarHeaderContainer(),
 
                       // Middle Container
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 10.0,
-                          top: 10.0,
-                          bottom: 10.0,
-                        ),
-                        child: Container(
-                          height: 100,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: kColumnCardsColor,
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(10.0),
-                            ),
-                            border: Border.all(
-                              color: Colors.grey,
-                              width: 0.5,
-                            ),
-                          ),
-                          child: const Text(
-                            "Kushoto",
-                            style: TextStyle(
-                              color: kTextMinorColor,
-                            ),
-                          ),
-                        ),
-                      ),
+                      MiddleSidebarContainer(),
 
                       // Artists Container
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 10.0,
-                            top: 10.0,
-                            bottom: 10.0,
-                          ),
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(10.0),
-                              ),
-                              border: Border.all(
-                                color: Colors.grey,
-                                width: 0.5,
-                              ),
-                            ),
-                            child: const Text(
-                              "Hii ya mwisho",
-                              style: TextStyle(
-                                color: kTextMinorColor,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                      ArtistsSidebarContainer(),
                     ],
                   ),
                 ),
