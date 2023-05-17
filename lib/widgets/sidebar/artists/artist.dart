@@ -30,6 +30,38 @@ class ArtistsSidebarContainer extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.search,
+                        color: kIconNotSelected,
+                      ), // Search icon
+                      SizedBox(
+                          width:
+                              8), // Spacer between search icon and text/dropdown row
+                      Row(
+                        children: [
+                          Text(
+                            "Recents",
+                            style: TextStyle(
+                              color: kTextMinorColor,
+                            ),
+                          ), // Text label
+                          Icon(
+                            Icons.arrow_drop_down,
+                            color: kIconNotSelected,
+                          ), // Dropdown icon
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 12),
+
+                // Artists List
                 for (int i = 0; i < 25; i++)
                   const Column(
                     children: [
