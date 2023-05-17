@@ -38,121 +38,126 @@ class _MyHomePageState extends State<MyHomePage> {
       // backgroundColor: kBackgroundColor,
       backgroundColor: Colors.blue,
       bottomNavigationBar: const PlayerBottomBar(),
-      body: Row(
-        children: [
-          // Sidebar Container
-          Expanded(
-            flex: 4,
-            child: SizedBox(
-              height: double.infinity,
-              child: Column(
-                children: [
-                  // First Container
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10.0,
-                      top: 10.0,
-                      bottom: 10.0,
-                    ),
-                    child: Container(
-                      height: 100,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: kColumnCardsColor,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(10.0),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Row(
+            children: [
+              // Sidebar Container
+              Expanded(
+                flex: 4,
+                child: SizedBox(
+                  height: double.infinity,
+                  child: Column(
+                    children: [
+                      // First Container
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 10.0,
+                          top: 10.0,
+                          bottom: 10.0,
                         ),
-                        border: Border.all(
-                          color: Colors.grey,
-                          width: 0.5,
+                        child: Container(
+                          height: 100,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: kColumnCardsColor,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10.0),
+                            ),
+                            border: Border.all(
+                              color: Colors.grey,
+                              width: 0.5,
+                            ),
+                          ),
+                          child: const Text(
+                            "Kushoto",
+                            style: TextStyle(
+                              color: kTextMinorColor,
+                            ),
+                          ),
                         ),
                       ),
-                      child: const Text(
-                        "Kushoto",
-                        style: TextStyle(
-                          color: kTextMinorColor,
-                        ),
-                      ),
-                    ),
-                  ),
 
-                  // Middle Container
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10.0,
-                      top: 10.0,
-                      bottom: 10.0,
-                    ),
-                    child: Container(
-                      height: 100,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: kColumnCardsColor,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(10.0),
+                      // Middle Container
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 10.0,
+                          top: 10.0,
+                          bottom: 10.0,
                         ),
-                        border: Border.all(
-                          color: Colors.grey,
-                          width: 0.5,
+                        child: Container(
+                          height: 100,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: kColumnCardsColor,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10.0),
+                            ),
+                            border: Border.all(
+                              color: Colors.grey,
+                              width: 0.5,
+                            ),
+                          ),
+                          child: const Text(
+                            "Kushoto",
+                            style: TextStyle(
+                              color: kTextMinorColor,
+                            ),
+                          ),
                         ),
                       ),
-                      child: const Text(
-                        "Kushoto",
-                        style: TextStyle(
-                          color: kTextMinorColor,
-                        ),
-                      ),
-                    ),
-                  ),
 
-                  // Artists Container
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10.0,
-                      top: 10.0,
-                      bottom: 10.0,
-                    ),
-                    child: Container(
-                      height: 500,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(10.0),
-                        ),
-                        border: Border.all(
-                          color: Colors.grey,
-                          width: 0.5,
+                      // Artists Container
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 10.0,
+                            top: 10.0,
+                            bottom: 10.0,
+                          ),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(10.0),
+                              ),
+                              border: Border.all(
+                                color: Colors.grey,
+                                width: 0.5,
+                              ),
+                            ),
+                            child: const Text(
+                              "Hii ya mwisho",
+                              style: TextStyle(
+                                color: kTextMinorColor,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                      child: const Text(
-                        "Hii ya mwisho",
-                        style: TextStyle(
-                          color: kTextMinorColor,
-                        ),
-                      ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-
-          // Body Container
-          Expanded(
-            flex: 6,
-            child: Container(
-              color: Colors.green,
-              height: double.infinity,
-              child: Text(
-                "Body Container",
+              const SizedBox(
+                width: 10,
               ),
-            ),
-          ),
-        ],
+
+              // Body Container
+              Expanded(
+                flex: 6,
+                child: Container(
+                  color: Colors.green,
+                  height: double.infinity,
+                  child: Text(
+                    "Body Container",
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
