@@ -76,11 +76,27 @@ class _MyHomePageState extends State<MyHomePage> {
               // Body Container
               Expanded(
                 flex: 7,
-                child: Container(
-                  color: Colors.green,
-                  height: double.infinity,
-                  child: Text(
-                    "Body Container",
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    right: 10.0,
+                    top: 10.0,
+                    bottom: 10.0,
+                  ),
+                  child: Container(
+                    height: double.infinity,
+                    decoration: BoxDecoration(
+                      color: kPrimaryColor,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(10.0),
+                      ),
+                      border: Border.all(
+                        color: kPrimaryColor,
+                        width: 2.0,
+                      ),
+                    ),
+                    child: Text(
+                      "Body Container",
+                    ),
                   ),
                 ),
               ),
