@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               // Sidebar Container
               const Expanded(
-                flex: 4,
+                flex: 3,
                 child: SizedBox(
                   height: double.infinity,
                   child: Column(
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
               // Body Container
               Expanded(
-                flex: 6,
+                flex: 7,
                 child: Container(
                   color: Colors.green,
                   height: double.infinity,
