@@ -27,12 +27,52 @@ class SidebarHeaderContainer extends StatelessWidget {
             width: 2.0,
           ),
         ),
-        child: const Text(
-          "Header",
-          style: TextStyle(
-            color: kTextMinorColor,
-          ),
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            HeaderIconText(
+              myIcon: Icons.home,
+              label: "Home",
+            ),
+            HeaderIconText(
+              myIcon: Icons.search,
+              label: "Search",
+            ),
+          ],
         ),
+      ),
+    );
+  }
+}
+
+class HeaderIconText extends StatelessWidget {
+  const HeaderIconText({
+    super.key,
+    required this.myIcon,
+    required this.label,
+  });
+
+  final IconData myIcon;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(12.0),
+      child: Row(
+        children: [
+          Icon(
+            myIcon,
+            color: kIconNotSelected,
+          ),
+          SizedBox(width: 15),
+          Text(
+            label,
+            style: TextStyle(
+              color: kTextMinorColor,
+            ),
+          ),
+        ],
       ),
     );
   }
