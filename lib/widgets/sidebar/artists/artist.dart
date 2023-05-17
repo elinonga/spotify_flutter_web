@@ -3,8 +3,8 @@ import 'package:spotify_flutter_web/constants.dart';
 
 class ArtistsSidebarContainer extends StatelessWidget {
   const ArtistsSidebarContainer({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,22 +18,66 @@ class ArtistsSidebarContainer extends StatelessWidget {
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Colors.red,
+            color: kColumnCardsColor,
             borderRadius: const BorderRadius.all(
               Radius.circular(10.0),
             ),
             border: Border.all(
-              color: Colors.grey,
-              width: 0.5,
+              color: kColumnCardsColor,
+              width: 2.0,
             ),
           ),
-          child: const Text(
-            "Hii ya mwisho",
-            style: TextStyle(
-              color: kTextMinorColor,
+          child: const SingleChildScrollView(
+            child: Column(
+              children: [
+                ArtistContainer(label: "Hii ya mwisho"),
+                SizedBox(height: 30),
+                ArtistContainer(label: "Hii ya mwisho"),
+                SizedBox(height: 30),
+                ArtistContainer(label: "Hii ya mwisho"),
+                SizedBox(height: 30),
+                ArtistContainer(label: "Hii ya mwisho"),
+                SizedBox(height: 30),
+                ArtistContainer(label: "Hii ya mwisho"),
+                SizedBox(height: 30),
+                ArtistContainer(label: "Hii ya mwisho"),
+                SizedBox(height: 30),
+                ArtistContainer(label: "Hii ya mwisho"),
+                SizedBox(height: 30),
+                ArtistContainer(label: "Hii ya mwisho"),
+                SizedBox(height: 30),
+                ArtistContainer(label: "Hii ya mwisho"),
+                SizedBox(height: 30),
+                ArtistContainer(label: "Kariakoo"),
+                SizedBox(height: 30),
+                ArtistContainer(label: "Kariakoo"),
+                SizedBox(height: 30),
+                ArtistContainer(label: "Kariakoo"),
+                SizedBox(height: 30),
+                ArtistContainer(label: "Kariakoo"),
+              ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ArtistContainer extends StatelessWidget {
+  const ArtistContainer({
+    Key? key,
+    required this.label,
+  }) : super(key: key);
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      label,
+      style: const TextStyle(
+        color: kTextMinorColor,
       ),
     );
   }

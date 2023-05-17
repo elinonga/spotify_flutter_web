@@ -23,12 +23,12 @@ class MiddleSidebarContainer extends StatelessWidget {
             Radius.circular(10.0),
           ),
           border: Border.all(
-            color: Colors.grey,
-            width: 0.5,
+            color: kColumnCardsColor,
+            width: 2.0,
           ),
         ),
         child: const Text(
-          "Kushoto",
+          "Middle",
           style: TextStyle(
             color: kTextMinorColor,
           ),

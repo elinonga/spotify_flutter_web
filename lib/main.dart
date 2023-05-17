@@ -38,8 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: kBackgroundColor,
-      backgroundColor: Colors.blue,
+      backgroundColor: kBackgroundColor,
       bottomNavigationBar: const PlayerBottomBar(),
       body: LayoutBuilder(
         builder: (context, constraints) {
