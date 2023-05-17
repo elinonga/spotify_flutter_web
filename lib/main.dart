@@ -20,6 +20,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: kPrimaryColor,
+        scrollbarTheme: ScrollbarThemeData(
+          thumbColor: MaterialStateProperty.all<Color>(
+              kTextColor), // Set the color of the scroll indicator
+          trackColor: MaterialStateProperty.all<Color>(
+              Colors.grey), // Set the color of the scroll track
+        ),
         // useMaterial3: true,
       ),
       home: const MyHomePage(),

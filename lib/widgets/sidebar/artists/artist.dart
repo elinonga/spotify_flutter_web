@@ -27,34 +27,16 @@ class ArtistsSidebarContainer extends StatelessWidget {
               width: 2.0,
             ),
           ),
-          child: const SingleChildScrollView(
+          child: SingleChildScrollView(
             child: Column(
               children: [
-                ArtistContainer(label: "Hii ya mwisho"),
-                SizedBox(height: 30),
-                ArtistContainer(label: "Hii ya mwisho"),
-                SizedBox(height: 30),
-                ArtistContainer(label: "Hii ya mwisho"),
-                SizedBox(height: 30),
-                ArtistContainer(label: "Hii ya mwisho"),
-                SizedBox(height: 30),
-                ArtistContainer(label: "Hii ya mwisho"),
-                SizedBox(height: 30),
-                ArtistContainer(label: "Hii ya mwisho"),
-                SizedBox(height: 30),
-                ArtistContainer(label: "Hii ya mwisho"),
-                SizedBox(height: 30),
-                ArtistContainer(label: "Hii ya mwisho"),
-                SizedBox(height: 30),
-                ArtistContainer(label: "Hii ya mwisho"),
-                SizedBox(height: 30),
-                ArtistContainer(label: "Kariakoo"),
-                SizedBox(height: 30),
-                ArtistContainer(label: "Kariakoo"),
-                SizedBox(height: 30),
-                ArtistContainer(label: "Kariakoo"),
-                SizedBox(height: 30),
-                ArtistContainer(label: "Kariakoo"),
+                for (int i = 0; i < 25; i++)
+                  const Column(
+                    children: [
+                      ArtistContainer(label: "Hii ya mwisho"),
+                      SizedBox(height: 30),
+                    ],
+                  ),
               ],
             ),
           ),
