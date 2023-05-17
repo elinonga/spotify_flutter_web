@@ -30,35 +30,8 @@ class ArtistsSidebarContainer extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(
-                        Icons.search,
-                        color: kIconNotSelected,
-                      ), // Search icon
-                      SizedBox(
-                          width:
-                              8), // Spacer between search icon and text/dropdown row
-                      Row(
-                        children: [
-                          Text(
-                            "Recents",
-                            style: TextStyle(
-                              color: kTextMinorColor,
-                            ),
-                          ), // Text label
-                          Icon(
-                            Icons.arrow_drop_down,
-                            color: kIconNotSelected,
-                          ), // Dropdown icon
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                // A Row of Icon + Dropdown Menu
+                const RowHeaderArtistList(),
                 const SizedBox(height: 12),
 
                 // Artists List
@@ -78,6 +51,76 @@ class ArtistsSidebarContainer extends StatelessWidget {
   }
 }
 
+// A Row of Icon + Dropdown Menu
+class RowHeaderArtistList extends StatelessWidget {
+  const RowHeaderArtistList({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // Search Icon
+          const Icon(
+            Icons.search,
+            color: kIconNotSelected,
+          ), // Search icon
+          const SizedBox(width: 8),
+
+          // Recents Dropdown
+          PopupMenuButton<String>(
+            itemBuilder: (context) {
+              return const [
+                PopupMenuItem(
+                  value: "Recents",
+                  child: Text("Recents"),
+                ),
+                PopupMenuItem(
+                  value: "Recently Added",
+                  child: Text("Recently Added"),
+                ),
+                PopupMenuItem(
+                  value: "Alphabetical",
+                  child: Text("Alphabetical"),
+                ),
+                PopupMenuItem(
+                  value: "Creator",
+                  child: Text("Creator"),
+                ),
+              ];
+            },
+            onSelected: (value) {
+              // Handle dropdown menu item selection
+              print("Selected: $value");
+            },
+            child: const Row(
+              children: [
+                Text(
+                  "Recents",
+                  style: TextStyle(
+                    color: kTextMinorColor,
+                  ),
+                ),
+
+                // Dropdown icon
+                Icon(
+                  Icons.arrow_drop_down,
+                  color: kIconNotSelected,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// Artists List (Scrollable)
 class ArtistContainer extends StatelessWidget {
   const ArtistContainer({
     Key? key,
