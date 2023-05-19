@@ -87,12 +87,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     height: double.infinity,
                     decoration: BoxDecoration(
-                      color: kPrimaryColor,
+                      color: kBannerColor3,
                       borderRadius: const BorderRadius.all(
                         Radius.circular(10.0),
                       ),
                       border: Border.all(
-                        color: kPrimaryColor,
+                        color: kBannerColor3,
                         width: 2.0,
                       ),
                     ),
@@ -101,123 +101,52 @@ class _MyHomePageState extends State<MyHomePage> {
                         const SizedBox(height: 12.0),
 
                         // Top Icons (Install app + User Icon)
-                        Container(
-                          color: Colors.pink,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Container Header
-                              const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  // Left Icons
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 12.0),
-                                    child: Row(
-                                      children: [
-                                        CircularIconContainer(
-                                          myIcon: Icons.arrow_back_ios,
-                                        ),
-                                        SizedBox(width: 15),
-                                        CircularIconContainer(
-                                          myIcon: Icons.arrow_forward_ios,
-                                        ),
-                                      ],
-                                    ),
+                        const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Container Header
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                // Left Icons
+                                Padding(
+                                  padding: EdgeInsets.only(left: 12.0),
+                                  child: Row(
+                                    children: [
+                                      CircularIconContainer(
+                                        myIcon: Icons.arrow_back_ios,
+                                      ),
+                                      SizedBox(width: 15),
+                                      CircularIconContainer(
+                                        myIcon: Icons.arrow_forward_ios,
+                                      ),
+                                    ],
                                   ),
+                                ),
 
-                                  // Right container
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 12.0),
-                                    child: Row(
-                                      children: [
-                                        IconTextContainer(),
-                                        SizedBox(width: 15),
-                                        CircularIconContainer(
-                                          myIcon: Icons.person,
-                                        ),
-                                      ],
-                                    ),
+                                // Right container
+                                Padding(
+                                  padding: EdgeInsets.only(right: 12.0),
+                                  child: Row(
+                                    children: [
+                                      IconTextContainer(),
+                                      SizedBox(width: 15),
+                                      CircularIconContainer(
+                                        myIcon: Icons.person,
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                              const SizedBox(height: 15),
-                            ],
-                          ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 15),
+                          ],
                         ),
                         const SizedBox(height: 15),
 
                         // Text + Image
-                        Container(
-                          width: double.infinity,
-                          height: 300,
-                          color: Colors.blue,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Picture
-                              Container(
-                                  color: Colors.red,
-                                  height: 250,
-                                  width: 200,
-                                  child: Text("Image")
-                                  // child: const Image(
-                                  //   image: AssetImage(
-                                  //     "assets/images/logo.png",
-                                  //   ),
-                                  // ),
-                                  ),
-                              const SizedBox(width: 10),
-
-                              // Column content
-                              const Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(height: 20),
-                                  // Category - Playlist / Artist / Album
-                                  Text(
-                                    "Playlist",
-                                    style: TextStyle(
-                                        color: kTextColor,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-
-                                  //Name of Playlist
-                                  Text(
-                                    "Africa #1",
-                                    style: TextStyle(
-                                      color: kTextColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 50,
-                                    ),
-                                  ),
-
-                                  // Row (username + # of songs in playlist + muda wa kumaliza playlist)
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "mezza .",
-                                        style: TextStyle(
-                                            color: kTextColor,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(width: 2),
-                                      Text(
-                                        "94 songs",
-                                        style: TextStyle(
-                                            color: kTextColor,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(width: 2),
-                                      Text(", about 7 hr 30 min")
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                        const MiddleTextImageContainer(),
+                        const SizedBox(height: 15),
 
                         // Play Icon + Table of Songs
                         Container(
@@ -235,6 +164,79 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
       ),
+    );
+  }
+}
+
+class MiddleTextImageContainer extends StatelessWidget {
+  const MiddleTextImageContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      children: [
+        // Picture
+        SizedBox(
+          height: 250,
+          child: Image(
+            image: AssetImage(
+              "assets/images/artists/africa.jpg",
+            ),
+          ),
+        ),
+        SizedBox(width: 10),
+
+        // Column content
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Category - Playlist / Artist / Album
+            Text(
+              "Playlist",
+              style: TextStyle(color: kTextColor, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 15),
+
+            //Name of Playlist
+            Text(
+              "Africa #1",
+              style: TextStyle(
+                color: kTextColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 80,
+              ),
+            ),
+            SizedBox(height: 15),
+
+            // Row (username + # of songs in playlist + muda wa kumaliza playlist)
+            Row(
+              children: [
+                Text(
+                  "mezza .",
+                  style:
+                      TextStyle(color: kTextColor, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(width: 2),
+                Text(
+                  "94 songs",
+                  style:
+                      TextStyle(color: kTextColor, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(width: 2),
+                Text(
+                  ", about 7 hr 30 min",
+                  style: TextStyle(
+                    color: kTextMinorColor,
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+      ],
     );
   }
 }
