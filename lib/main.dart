@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context, constraints) {
           return Row(
             children: [
-              // Sidebar Container
+              // 🔒️ Sidebar Container
               const Expanded(
                 flex: 3,
                 child: SizedBox(
@@ -94,8 +94,57 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 2.0,
                       ),
                     ),
-                    child: Text(
-                      "Body Container",
+                    child: ListView(
+                      children: [
+                        const SizedBox(height: 12.0),
+
+                        // Container Header
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            // Left Icons
+                            Padding(
+                              padding: EdgeInsets.only(left: 12.0),
+                              child: Row(
+                                children: [
+                                  CircularIconContainer(
+                                    myIcon: Icons.arrow_back_ios,
+                                  ),
+                                  SizedBox(width: 15),
+                                  CircularIconContainer(
+                                    myIcon: Icons.arrow_forward_ios,
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            // Right container
+                            Padding(
+                              padding: EdgeInsets.only(right: 12.0),
+                              child: Row(
+                                children: [
+                                  IconTextContainer(),
+                                  SizedBox(width: 15),
+                                  CircularIconContainer(
+                                    myIcon: Icons.person,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 15),
+
+                        // Text + Image
+                        Container(
+                          color: Colors.red,
+                          child: const Text(
+                            "Body Container",
+                          ),
+                        ),
+
+                        // Play Icon + Table of Songs
+                      ],
                     ),
                   ),
                 ),
@@ -103,6 +152,92 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           );
         },
+      ),
+    );
+  }
+}
+
+class IconTextContainer extends StatelessWidget {
+  const IconTextContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        color: kCircularContainerColor,
+        border: Border.all(
+          color: kColumnCardsColor,
+          width: 1.0,
+        ),
+      ),
+      child: const Padding(
+        padding: EdgeInsets.only(
+          top: 2.0,
+          bottom: 2.0,
+          left: 8.0,
+          right: 8.0,
+        ),
+        child: Row(
+          children: [
+            Icon(
+              Icons.download_for_offline_rounded,
+              color: kIconNotSelected,
+            ),
+            SizedBox(width: 5),
+            Text(
+              "Install App",
+              style: TextStyle(
+                color: kTextColor,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CircularIconContainer extends StatelessWidget {
+  const CircularIconContainer({
+    super.key,
+    this.myIcon,
+  });
+
+  final IconData? myIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    // Set padding for the icons, to appear centered correctly in the container
+    EdgeInsets padding;
+    if (myIcon == Icons.arrow_back_ios) {
+      padding = const EdgeInsets.only(left: 8.0);
+    } else if (myIcon == Icons.arrow_forward_ios) {
+      padding = const EdgeInsets.only(left: 2.0);
+    } else {
+      padding = EdgeInsets.zero;
+    }
+
+    return Container(
+      alignment: Alignment.center,
+      width: 30,
+      height: 30,
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.blue,
+      ),
+      child: Align(
+        alignment: Alignment.center,
+        child: Padding(
+          padding: padding, // Adjust the padding as needed
+          child: Icon(
+            myIcon,
+            color: Colors.white,
+            size: 22,
+          ),
+        ),
       ),
     );
   }
