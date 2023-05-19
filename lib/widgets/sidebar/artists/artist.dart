@@ -12,15 +12,15 @@ class ArtistsSidebarContainer extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(
           left: 10.0,
-          top: 10.0,
           bottom: 10.0,
         ),
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
             color: kColumnCardsColor,
-            borderRadius: const BorderRadius.all(
-              Radius.circular(10.0),
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(10.0),
+              bottomRight: Radius.circular(10.0),
             ),
             border: Border.all(
               color: kColumnCardsColor,

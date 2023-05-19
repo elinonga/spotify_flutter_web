@@ -12,15 +12,15 @@ class MiddleSidebarContainer extends StatelessWidget {
       padding: const EdgeInsets.only(
         left: 10.0,
         top: 10.0,
-        bottom: 10.0,
       ),
       child: Container(
         height: 100,
         width: double.infinity,
         decoration: BoxDecoration(
           color: kColumnCardsColor,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(10.0),
+          borderRadius: const BorderRadius.only(
+            topRight: Radius.circular(10.0),
+            topLeft: Radius.circular(10.0),
           ),
           border: Border.all(
             color: kColumnCardsColor,
