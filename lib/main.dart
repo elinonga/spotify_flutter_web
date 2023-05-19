@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_flutter_web/constants.dart';
+import 'package:spotify_flutter_web/widgets/body/banner/1top/circular_icon_container.dart';
+import 'package:spotify_flutter_web/widgets/body/banner/1top/icon_text_container.dart';
 import 'package:spotify_flutter_web/widgets/bottom/player.dart';
 import 'package:spotify_flutter_web/widgets/sidebar/artists/artist.dart';
 import 'package:spotify_flutter_web/widgets/sidebar/header/header_sidebar.dart';
@@ -98,52 +100,132 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
                         const SizedBox(height: 12.0),
 
-                        // Container Header
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            // Left Icons
-                            Padding(
-                              padding: EdgeInsets.only(left: 12.0),
-                              child: Row(
+                        // Top Icons (Install app + User Icon)
+                        Container(
+                          color: Colors.pink,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Container Header
+                              const Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  CircularIconContainer(
-                                    myIcon: Icons.arrow_back_ios,
+                                  // Left Icons
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 12.0),
+                                    child: Row(
+                                      children: [
+                                        CircularIconContainer(
+                                          myIcon: Icons.arrow_back_ios,
+                                        ),
+                                        SizedBox(width: 15),
+                                        CircularIconContainer(
+                                          myIcon: Icons.arrow_forward_ios,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  SizedBox(width: 15),
-                                  CircularIconContainer(
-                                    myIcon: Icons.arrow_forward_ios,
-                                  ),
-                                ],
-                              ),
-                            ),
 
-                            // Right container
-                            Padding(
-                              padding: EdgeInsets.only(right: 12.0),
-                              child: Row(
-                                children: [
-                                  IconTextContainer(),
-                                  SizedBox(width: 15),
-                                  CircularIconContainer(
-                                    myIcon: Icons.person,
+                                  // Right container
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 12.0),
+                                    child: Row(
+                                      children: [
+                                        IconTextContainer(),
+                                        SizedBox(width: 15),
+                                        CircularIconContainer(
+                                          myIcon: Icons.person,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                              const SizedBox(height: 15),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 15),
 
                         // Text + Image
                         Container(
-                          color: Colors.red,
-                          child: const Text(
-                            "Body Container",
+                          width: double.infinity,
+                          height: 300,
+                          color: Colors.blue,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Picture
+                              Container(
+                                  color: Colors.red,
+                                  height: 250,
+                                  width: 200,
+                                  child: Text("Image")
+                                  // child: const Image(
+                                  //   image: AssetImage(
+                                  //     "assets/images/logo.png",
+                                  //   ),
+                                  // ),
+                                  ),
+                              const SizedBox(width: 10),
+
+                              // Column content
+                              const Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 20),
+                                  // Category - Playlist / Artist / Album
+                                  Text(
+                                    "Playlist",
+                                    style: TextStyle(
+                                        color: kTextColor,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+
+                                  //Name of Playlist
+                                  Text(
+                                    "Africa #1",
+                                    style: TextStyle(
+                                      color: kTextColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 50,
+                                    ),
+                                  ),
+
+                                  // Row (username + # of songs in playlist + muda wa kumaliza playlist)
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "mezza .",
+                                        style: TextStyle(
+                                            color: kTextColor,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(width: 2),
+                                      Text(
+                                        "94 songs",
+                                        style: TextStyle(
+                                            color: kTextColor,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(width: 2),
+                                      Text(", about 7 hr 30 min")
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
                         ),
 
                         // Play Icon + Table of Songs
+                        Container(
+                          color: Colors.orange,
+                          child: const SongsTableData(),
+                        ),
+
+                        //End
                       ],
                     ),
                   ),
@@ -157,85 +239,27 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class IconTextContainer extends StatelessWidget {
-  const IconTextContainer({
-    super.key,
-  });
+class SongsTableData extends StatelessWidget {
+  const SongsTableData({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        color: kCircularContainerColor,
-        border: Border.all(
-          color: kColumnCardsColor,
-          width: 1.0,
-        ),
-      ),
-      child: const Padding(
-        padding: EdgeInsets.only(
-          top: 2.0,
-          bottom: 2.0,
-          left: 8.0,
-          right: 8.0,
-        ),
-        child: Row(
-          children: [
-            Icon(
-              Icons.download_for_offline_rounded,
-              color: kIconNotSelected,
+    return DataTable(
+      columns: const [
+        DataColumn(label: Text('#')),
+        DataColumn(label: Text('Title')),
+        DataColumn(label: Text('Album')),
+        DataColumn(label: Text('Date added')),
+        DataColumn(label: Text('Time')),
+      ],
+      rows: List<DataRow>.generate(
+        5,
+        (index) => DataRow(
+          cells: List<DataCell>.generate(
+            5, // Adjust the number of cells to match the number of columns
+            (columnIndex) => DataCell(
+              Text('R ${index + 1}, C ${columnIndex + 1}'),
             ),
-            SizedBox(width: 5),
-            Text(
-              "Install App",
-              style: TextStyle(
-                color: kTextColor,
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CircularIconContainer extends StatelessWidget {
-  const CircularIconContainer({
-    super.key,
-    this.myIcon,
-  });
-
-  final IconData? myIcon;
-
-  @override
-  Widget build(BuildContext context) {
-    // Set padding for the icons, to appear centered correctly in the container
-    EdgeInsets padding;
-    if (myIcon == Icons.arrow_back_ios) {
-      padding = const EdgeInsets.only(left: 8.0);
-    } else if (myIcon == Icons.arrow_forward_ios) {
-      padding = const EdgeInsets.only(left: 2.0);
-    } else {
-      padding = EdgeInsets.zero;
-    }
-
-    return Container(
-      alignment: Alignment.center,
-      width: 30,
-      height: 30,
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-        color: Colors.blue,
-      ),
-      child: Align(
-        alignment: Alignment.center,
-        child: Padding(
-          padding: padding, // Adjust the padding as needed
-          child: Icon(
-            myIcon,
-            color: Colors.white,
-            size: 22,
           ),
         ),
       ),
