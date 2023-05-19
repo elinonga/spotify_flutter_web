@@ -30,6 +30,8 @@ class ArtistsSidebarContainer extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                //🔥 Start
+
                 // A Row of Icon + Dropdown Menu
                 const RowHeaderArtistList(),
                 const SizedBox(height: 12),
@@ -42,6 +44,8 @@ class ArtistsSidebarContainer extends StatelessWidget {
                       SizedBox(height: 30),
                     ],
                   ),
+
+                // 🔥 End
               ],
             ),
           ),
@@ -131,11 +135,62 @@ class ArtistContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      label,
-      style: const TextStyle(
-        color: kTextMinorColor,
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        // Row of Artist Image + Name
+        const Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(width: 12),
+            // Circular Image
+            CircleAvatar(
+              radius: 20,
+              backgroundColor: Colors.brown,
+              foregroundImage: AssetImage(
+                "assets/images/artists/africa.jpg",
+              ),
+            ),
+            SizedBox(width: 10),
+
+            // Column with Artist Name and Artist/Playlist/Album word
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'David Mezza',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                    fontSize: 15,
+                  ),
+                ),
+                Text(
+                  'Artist',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+
+        // Icon of speaker (like music playing) - only when hovered
+        Padding(
+          padding: const EdgeInsets.only(right: 12.0),
+          child: MouseRegion(
+            onHover: (event) {
+              // Show speaker icon or perform other actions
+            },
+            child: const Icon(
+              Icons.volume_up,
+              color: Colors.grey,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
