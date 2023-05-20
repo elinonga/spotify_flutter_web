@@ -152,6 +152,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         SizedBox(height: 15),
 
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: RecommendationText(
+                            label: "Refresh",
+                            size: 15,
+                            rangi: kTextMinorColor,
+                          ),
+                        ),
+
                         // Footer
                       ],
                     ),
