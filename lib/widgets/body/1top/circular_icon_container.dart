@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spotify_flutter_web/constants.dart';
 
 class CircularIconContainer extends StatelessWidget {
   const CircularIconContainer({
@@ -26,7 +27,7 @@ class CircularIconContainer extends StatelessWidget {
       height: 30,
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.blue,
+        color: kCircularContainerColor,
       ),
       child: Align(
         alignment: Alignment.center,
