@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:spotify_flutter_web/constants.dart';
 import 'package:spotify_flutter_web/widgets/body/3songs_table/table_of_songs.dart';
 import 'package:spotify_flutter_web/widgets/body/3songs_table/top_banner.dart';
+import 'package:spotify_flutter_web/widgets/body/4recommended/1recommend_text_header.dart';
+import 'package:spotify_flutter_web/widgets/body/4recommended/row_of_recommendations.dart';
 import 'package:spotify_flutter_web/widgets/bottom/player.dart';
 import 'package:spotify_flutter_web/widgets/sidebar/artists/artist.dart';
 import 'package:spotify_flutter_web/widgets/sidebar/header/header_sidebar.dart';
@@ -99,29 +101,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         // Play Icon + Table of Songs
                         TableOfSongs(),
-                        SizedBox(height: 15),
+                        SizedBox(height: 60),
 
                         //Recommended
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Recommended",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: kTextColor,
-                                fontSize: 25,
-                              ),
-                            ),
-                            SizedBox(height: 15),
-                            Text(
-                              "Based on what's in this playlist",
-                              style: TextStyle(
-                                color: kTextMinorColor,
-                              ),
-                            ),
-                          ],
+                        RecommendationText(
+                          label: "Recommended",
+                          rangi: kTextColor,
+                          size: 25,
                         ),
+                        SizedBox(height: 15),
+                        RecommendationText(
+                          label: "Based on what's in this playlist",
+                          rangi: kTextMinorColor,
+                          size: 14,
+                        ),
+                        SizedBox(height: 30),
+
+                        // Row of Recommendations
+                        RowOfRecommendations(),
 
                         SizedBox(height: 15),
 
