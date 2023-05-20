@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_flutter_web/constants.dart';
-import 'package:spotify_flutter_web/widgets/body/3songs_table/3songs_table.dart';
-import 'package:spotify_flutter_web/widgets/body/3songs_table/play_icon_dropdown_row.dart';
+import 'package:spotify_flutter_web/widgets/body/3songs_table/4songs_table.dart';
+import 'package:spotify_flutter_web/widgets/body/3songs_table/3play_icon_dropdown_row.dart';
 
 class TableOfSongs extends StatelessWidget {
   const TableOfSongs({

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_flutter_web/constants.dart';
-import 'package:spotify_flutter_web/widgets/body/1top/build_top_icon.dart';
-import 'package:spotify_flutter_web/widgets/body/2middle/image_text.dart';
-import 'package:spotify_flutter_web/widgets/body/3songs_table/3songs_table.dart';
-import 'package:spotify_flutter_web/widgets/body/3songs_table/play_icon_dropdown_row.dart';
 import 'package:spotify_flutter_web/widgets/body/3songs_table/table_of_songs.dart';
+import 'package:spotify_flutter_web/widgets/body/3songs_table/top_banner.dart';
 import 'package:spotify_flutter_web/widgets/bottom/player.dart';
 import 'package:spotify_flutter_web/widgets/sidebar/artists/artist.dart';
 import 'package:spotify_flutter_web/widgets/sidebar/header/header_sidebar.dart';
@@ -90,40 +87,43 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     height: double.infinity,
                     decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [
-                          kBannerColor1,
-                          kBannerColor2,
-                          kBannerColor3,
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                      borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(
-                        color: kBannerColor3,
-                        width: 2.0,
-                      ),
-                    ),
+                        color: kMusicBackground3,
+                        borderRadius: BorderRadius.circular(10.0),
+                        border: Border.all(
+                          color: kMusicBackground3,
+                        )),
                     child: ListView(
                       children: const [
-                        SizedBox(height: 12.0),
-
-                        // Top Icons (Install app + User Icon)
-                        BuildTopIconsRow(),
-                        SizedBox(height: 15),
-
-                        // Text + Image
-                        Padding(
-                          padding: EdgeInsets.only(left: 12.0),
-                          child: MiddleTextImageContainer(),
-                        ),
-                        SizedBox(height: 15),
+                        // Banner (Top Icons + Row(Image&Text))
+                        BannerBodyContainer(),
 
                         // Play Icon + Table of Songs
                         TableOfSongs(),
+                        SizedBox(height: 15),
 
                         //Recommended
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Recommended",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: kTextColor,
+                                fontSize: 25,
+                              ),
+                            ),
+                            SizedBox(height: 15),
+                            Text(
+                              "Based on what's in this playlist",
+                              style: TextStyle(
+                                color: kTextMinorColor,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        SizedBox(height: 15),
 
                         // Footer
                       ],
