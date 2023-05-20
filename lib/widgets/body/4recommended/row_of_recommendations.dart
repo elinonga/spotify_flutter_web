@@ -4,24 +4,37 @@ import 'package:spotify_flutter_web/widgets/body/4recommended/1recommend_text_he
 import 'package:spotify_flutter_web/widgets/sidebar/middle/middle_sidebar.dart';
 
 class RowOfRecommendations extends StatelessWidget {
+  final String imgUrl;
+  final String songName;
+  final String artistName;
+  final String albumName;
   const RowOfRecommendations({
     super.key,
+    required this.imgUrl,
+    required this.songName,
+    required this.artistName,
+    required this.albumName,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         // 1st Row
         Row(
           children: [
             // Image
-            ImageContainerRecommended(),
-            SizedBox(width: 10),
+            ImageContainerRecommended(
+              imgUrl: imgUrl,
+            ),
+            const SizedBox(width: 10),
 
             // Column of Texts
-            ArtistsTextColumn(),
+            ArtistsTextColumn(
+              songName: songName,
+              artistName: artistName,
+            ),
           ],
         ),
 
@@ -30,15 +43,18 @@ class RowOfRecommendations extends StatelessWidget {
           children: [
             // Artist's Album
             RecommendationText(
-              label: "Joyous Celebration, Vol.16",
+              label: albumName,
               size: 15,
               rangi: kTextMinorColor,
             ),
-            SizedBox(width: 88),
+            const SizedBox(width: 88),
 
             // Circular Container + Text (Add)
-            CircularContainerMiddleSidebar(
-              lebo: "Add",
+            const Padding(
+              padding: EdgeInsets.all(15.0),
+              child: CircularContainerMiddleSidebar(
+                lebo: "Add",
+              ),
             )
           ],
         ),
@@ -50,20 +66,22 @@ class RowOfRecommendations extends StatelessWidget {
 }
 
 class ImageContainerRecommended extends StatelessWidget {
+  final String imgUrl;
   const ImageContainerRecommended({
     super.key,
+    required this.imgUrl,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 12.0),
+      margin: EdgeInsets.only(left: 15.0),
       color: Colors.red,
       height: 50,
       width: 50,
-      child: const Image(
+      child: Image(
         image: AssetImage(
-          "assets/images/artists/joel.jpg",
+          imgUrl,
         ),
       ),
     );
@@ -71,27 +89,31 @@ class ImageContainerRecommended extends StatelessWidget {
 }
 
 class ArtistsTextColumn extends StatelessWidget {
+  final String songName;
+  final String artistName;
   const ArtistsTextColumn({
     super.key,
+    required this.songName,
+    required this.artistName,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Forward We Go - Live",
-          style: TextStyle(
+          songName,
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 15,
             color: kTextColor,
           ),
         ),
-        SizedBox(height: 7),
+        const SizedBox(height: 7),
         Text(
-          "Joyous Celebration",
-          style: TextStyle(
+          artistName,
+          style: const TextStyle(
             fontSize: 12,
             color: kTextMinorColor,
           ),

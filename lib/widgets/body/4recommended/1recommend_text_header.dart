@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spotify_flutter_web/constants.dart';
 
 class RecommendationText extends StatelessWidget {
   final String label;
@@ -15,15 +16,13 @@ class RecommendationText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        left: 12.0,
-        top: 12.0,
-      ),
+      padding: const EdgeInsets.all(15.0),
       child: Text(
         label,
         style: TextStyle(
           color: rangi,
           fontSize: size.toDouble(),
+          fontWeight: rangi == kTextColor ? FontWeight.bold : FontWeight.normal,
         ),
       ),
     );

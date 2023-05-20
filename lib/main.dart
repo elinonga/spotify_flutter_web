@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           rangi: kTextColor,
                           size: 25,
                         ),
-                        SizedBox(height: 15),
+
                         RecommendationText(
                           label: "Based on what's in this playlist",
                           rangi: kTextMinorColor,
@@ -118,7 +118,37 @@ class _MyHomePageState extends State<MyHomePage> {
                         SizedBox(height: 30),
 
                         // Row of Recommendations
-                        RowOfRecommendations(),
+                        RowOfRecommendations(
+                          imgUrl: "assets/images/artists/joel.jpg",
+                          songName: "Wadumu Milele",
+                          artistName: "Joel Lwaga",
+                          albumName:
+                              "Sitabaki Nilivyo (Live in Dar es Salaam, Tanzania)",
+                        ),
+                        RowOfRecommendations(
+                          imgUrl: "assets/images/artists/paul.jpg",
+                          songName: "Sijawahi Ona",
+                          artistName: "Paul Clement",
+                          albumName: "Shabaha (Live in Morogoro, Tanzania)",
+                        ),
+                        RowOfRecommendations(
+                          imgUrl: "assets/images/artists/donnie.jpg",
+                          songName: "Great is Your Mercy - Live",
+                          artistName: "Donnic McClurkin",
+                          albumName: "Donnie Live in London and more...",
+                        ),
+                        RowOfRecommendations(
+                          imgUrl: "assets/images/artists/maverick.jpg",
+                          songName: "Fear is not my Future",
+                          artistName: "Maverick City Music",
+                          albumName: "Kingdom Book One - Live in Los Angeles",
+                        ),
+                        RowOfRecommendations(
+                          imgUrl: "assets/images/artists/ntokozo.jpeg",
+                          songName: "We Pray for More",
+                          artistName: "Ntokozo Mbambo",
+                          albumName: "Moments in Time (Live)",
+                        ),
 
                         SizedBox(height: 15),
 
