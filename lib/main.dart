@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:spotify_flutter_web/constants.dart';
 import 'package:spotify_flutter_web/widgets/body/1top/build_top_icon.dart';
 import 'package:spotify_flutter_web/widgets/body/2middle/image_text.dart';
-import 'package:spotify_flutter_web/widgets/body/3songs_table/songs_table.dart';
+import 'package:spotify_flutter_web/widgets/body/3songs_table/3songs_table.dart';
 import 'package:spotify_flutter_web/widgets/body/3songs_table/play_icon_dropdown_row.dart';
+import 'package:spotify_flutter_web/widgets/body/3songs_table/table_of_songs.dart';
 import 'package:spotify_flutter_web/widgets/bottom/player.dart';
 import 'package:spotify_flutter_web/widgets/sidebar/artists/artist.dart';
 import 'package:spotify_flutter_web/widgets/sidebar/header/header_sidebar.dart';
@@ -105,57 +106,26 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     child: ListView(
-                      children: [
-                        const SizedBox(height: 12.0),
+                      children: const [
+                        SizedBox(height: 12.0),
 
                         // Top Icons (Install app + User Icon)
-                        const BuildTopIconsRow(),
-                        const SizedBox(height: 15),
+                        BuildTopIconsRow(),
+                        SizedBox(height: 15),
 
                         // Text + Image
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.only(left: 12.0),
                           child: MiddleTextImageContainer(),
                         ),
-                        const SizedBox(height: 15),
+                        SizedBox(height: 15),
 
                         // Play Icon + Table of Songs
-                        Container(
-                          // color: Colors.orange,
-                          decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.center,
-                              colors: [
-                                kMusicBackground1,
-                                kMusicBackground2,
-                                kMusicBackground3,
-                                kMusicBackground3,
-                                kMusicBackground3,
-                                kMusicBackground3,
-                                kMusicBackground3,
-                                kMusicBackground3,
-                                kMusicBackground3,
-                                kMusicBackground3,
-                                kMusicBackground3,
-                                kMusicBackground3,
-                                kMusicBackground3,
-                              ],
-                            ),
-                          ),
-                          child: const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Play Icon + Dropdown
-                              PlayIconDropdownRow(),
+                        TableOfSongs(),
 
-                              // Songs List
-                              SongsTableData(),
-                            ],
-                          ),
-                        ),
+                        //Recommended
 
-                        //End
+                        // Footer
                       ],
                     ),
                   ),
