@@ -5,6 +5,7 @@ const kBackgroundColor = Color(0xFF000000);
 // Size
 const kWidthRow = SizedBox(width: 12);
 const kHeightColumn = SizedBox(height: 15);
+const kMidHeightColumn = SizedBox(height: 30);
 const kBigHeightColumn = SizedBox(height: 50);
 
 // Divider
@@ -13,6 +14,13 @@ const kDivider = Padding(
   child: Divider(
     color: kIconNotSelected,
     thickness: 1.0,
+  ),
+);
+const kDivider2 = Padding(
+  padding: EdgeInsets.all(2.0),
+  child: Divider(
+    color: kIconNotSelected,
+    thickness: 0.5,
   ),
 );
 

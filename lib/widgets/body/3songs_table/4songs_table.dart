@@ -1,54 +1,108 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:spotify_flutter_web/constants.dart';
+import 'package:spotify_flutter_web/widgets/body/4recommended/row_of_recommendations.dart';
+import 'package:spotify_flutter_web/widgets/body/5footer/row_of_footer.dart';
 
 class SongsTableData extends StatelessWidget {
   const SongsTableData({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: Theme.of(context).copyWith(
-        dividerColor: kIconNotSelected,
-      ),
-      child: DataTable(
-        dividerThickness: 0.5, // Adjust the thickness of the divider as needed
-        // horizontalMargin: 50, // Adjust the horizontal margin as needed
-        columns: const [
-          DataColumn(label: SongText(lebo: '#')),
-          DataColumn(label: SongText(lebo: 'Title')),
-          DataColumn(label: SongText(lebo: 'Album')),
-          DataColumn(label: SongText(lebo: 'Date added')),
-          DataColumn(label: SongText(lebo: 'Time')),
-        ],
-
-        rows: List<DataRow>.generate(
-          55, // Adjust the number of rows to 55
-          (index) => DataRow(
-            cells: List<DataCell>.generate(
-              5, // Adjust the number of cells to match the number of columns
-              (columnIndex) => DataCell(
-                SongText(lebo: 'R ${index + 1}, C ${columnIndex + 1}'),
+    return Padding(
+      padding: EdgeInsets.all(25.0),
+      child: Column(
+        children: [
+          // Table Title
+          Row(
+            children: [
+              // Text (# + Title)
+              Expanded(
+                flex: 4,
+                child: Container(
+                  color: Colors.red,
+                  child: const Row(
+                    children: [
+                      FooterMinorText(lebo: "#"),
+                      FooterMinorText(lebo: "Title"),
+                    ],
+                  ),
+                ),
               ),
-            ),
+
+              // Text (Album + Date Added) + Clock Icon
+              Expanded(
+                flex: 6,
+                child: Container(
+                  color: Colors.pink,
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FooterMinorText(lebo: "Album"),
+                      FooterMinorText(lebo: "Date Added"),
+                      Icon(
+                        FontAwesome.clock_o,
+                        color: kIconNotSelected,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
+          const Divider(color: kIconNotSelected),
+
+          // Table content (songs)
+          const SongsTableRow(),
+        ],
       ),
     );
   }
 }
 
-class SongText extends StatelessWidget {
-  const SongText({
-    super.key,
-    required this.lebo,
-  });
-  final String lebo;
+class SongsTableRow extends StatelessWidget {
+  const SongsTableRow({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      lebo,
-      style: TextStyle(color: kTextColor),
+    return Row(
+      children: [
+        // Text (# + Title)
+        Expanded(
+          flex: 4,
+          child: Container(
+            color: Colors.transparent,
+            child: const Row(
+              children: [
+                FooterMinorText(lebo: "1"),
+                ImageContainerTextRow(
+                  imgUrl: "assets/images/artists/joel.jpg",
+                  songName: "Sitabaki kama Nilivyo",
+                  artistName: "Joel Lwaga",
+                ),
+              ],
+            ),
+          ),
+        ),
+
+        // Text (Album + Date Added) + Clock Icon
+        Expanded(
+          flex: 6,
+          child: Container(
+            color: Colors.yellow,
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                FooterMinorText(lebo: "The Promised Revival"),
+                FooterMinorText(lebo: "Apr 21, 2022"),
+                FooterMinorText(lebo: "6:56"),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

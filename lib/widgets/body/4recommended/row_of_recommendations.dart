@@ -78,20 +78,10 @@ class RowOfRecommendations extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         // 1st Row
-        Row(
-          children: [
-            // Image
-            ImageContainerRecommended(
-              imgUrl: imgUrl,
-            ),
-            const SizedBox(width: 10),
-
-            // Column of Texts
-            ArtistsTextColumn(
-              songName: songName,
-              artistName: artistName,
-            ),
-          ],
+        ImageContainerTextRow(
+          imgUrl: imgUrl,
+          songName: songName,
+          artistName: artistName,
         ),
 
         // 2nd Row
@@ -116,6 +106,38 @@ class RowOfRecommendations extends StatelessWidget {
         ),
 
         //
+      ],
+    );
+  }
+}
+
+class ImageContainerTextRow extends StatelessWidget {
+  const ImageContainerTextRow({
+    super.key,
+    required this.imgUrl,
+    required this.songName,
+    required this.artistName,
+  });
+
+  final String imgUrl;
+  final String songName;
+  final String artistName;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        // Image
+        ImageContainerRecommended(
+          imgUrl: imgUrl,
+        ),
+        const SizedBox(width: 10),
+
+        // Column of Texts
+        ArtistsTextColumn(
+          songName: songName,
+          artistName: artistName,
+        ),
       ],
     );
   }
