@@ -2,6 +2,20 @@ import 'package:flutter/material.dart';
 
 const kBackgroundColor = Color(0xFF000000);
 
+// Size
+const kWidthRow = SizedBox(width: 12);
+const kHeightColumn = SizedBox(height: 15);
+const kBigHeightColumn = SizedBox(height: 50);
+
+// Divider
+const kDivider = Padding(
+  padding: EdgeInsets.all(12.0),
+  child: Divider(
+    color: kIconNotSelected,
+    thickness: 1.0,
+  ),
+);
+
 // Sidebar Background colors
 const kColumnCardsColor = Color(0xFF121212);
 const kCircularContainerColor = Color(0xFF232323);

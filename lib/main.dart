@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:spotify_flutter_web/constants.dart';
 import 'package:spotify_flutter_web/widgets/body/3songs_table/table_of_songs.dart';
 import 'package:spotify_flutter_web/widgets/body/3songs_table/top_banner.dart';
-import 'package:spotify_flutter_web/widgets/body/4recommended/1recommend_text_header.dart';
 import 'package:spotify_flutter_web/widgets/body/4recommended/row_of_recommendations.dart';
+import 'package:spotify_flutter_web/widgets/body/5footer/last_footer_row.dart';
+import 'package:spotify_flutter_web/widgets/body/5footer/row_of_footer.dart';
 import 'package:spotify_flutter_web/widgets/bottom/player.dart';
 import 'package:spotify_flutter_web/widgets/sidebar/artists/artist.dart';
 import 'package:spotify_flutter_web/widgets/sidebar/header/header_sidebar.dart';
@@ -73,9 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-              const SizedBox(
-                width: 10,
-              ),
+              kWidthRow,
 
               // Body Container
               Expanded(
@@ -101,67 +100,34 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         // Play Icon + Table of Songs
                         TableOfSongs(),
-                        SizedBox(height: 60),
+                        kHeightColumn,
+
+                        // Find More Link
+                        AlignBottomRightText(
+                          lebo: "Find More",
+                        ),
+                        kBigHeightColumn,
 
                         //Recommended
-                        RecommendationText(
-                          label: "Recommended",
-                          rangi: kTextColor,
-                          size: 25,
-                        ),
+                        AllRecommendations(),
+                        kHeightColumn,
 
-                        RecommendationText(
-                          label: "Based on what's in this playlist",
-                          rangi: kTextMinorColor,
-                          size: 14,
+                        // Refresh Text Link
+                        AlignBottomRightText(
+                          lebo: "Refresh",
                         ),
-                        SizedBox(height: 30),
-
-                        // Row of Recommendations
-                        RowOfRecommendations(
-                          imgUrl: "assets/images/artists/joel.jpg",
-                          songName: "Wadumu Milele",
-                          artistName: "Joel Lwaga",
-                          albumName:
-                              "Sitabaki Nilivyo (Live in Dar es Salaam, Tanzania)",
-                        ),
-                        RowOfRecommendations(
-                          imgUrl: "assets/images/artists/paul.jpg",
-                          songName: "Sijawahi Ona",
-                          artistName: "Paul Clement",
-                          albumName: "Shabaha (Live in Morogoro, Tanzania)",
-                        ),
-                        RowOfRecommendations(
-                          imgUrl: "assets/images/artists/donnie.jpg",
-                          songName: "Great is Your Mercy - Live",
-                          artistName: "Donnic McClurkin",
-                          albumName: "Donnie Live in London and more...",
-                        ),
-                        RowOfRecommendations(
-                          imgUrl: "assets/images/artists/maverick.jpg",
-                          songName: "Fear is not my Future",
-                          artistName: "Maverick City Music",
-                          albumName: "Kingdom Book One - Live in Los Angeles",
-                        ),
-                        RowOfRecommendations(
-                          imgUrl: "assets/images/artists/ntokozo.jpeg",
-                          songName: "We Pray for More",
-                          artistName: "Ntokozo Mbambo",
-                          albumName: "Moments in Time (Live)",
-                        ),
-
-                        SizedBox(height: 15),
-
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: RecommendationText(
-                            label: "Refresh",
-                            size: 15,
-                            rangi: kTextMinorColor,
-                          ),
-                        ),
+                        kBigHeightColumn,
 
                         // Footer
+                        RowOfFooter(),
+                        kBigHeightColumn,
+
+                        // Divider
+                        kDivider,
+                        kBigHeightColumn,
+
+                        LastFooterRow(),
+                        kBigHeightColumn,
                       ],
                     ),
                   ),
@@ -170,6 +136,27 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           );
         },
+      ),
+    );
+  }
+}
+
+class AlignBottomRightText extends StatelessWidget {
+  const AlignBottomRightText({
+    super.key,
+    required this.lebo,
+  });
+
+  final String lebo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: RecommendationText(
+        label: lebo,
+        size: 15,
+        rangi: kTextMinorColor,
       ),
     );
   }

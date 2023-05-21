@@ -1,7 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_flutter_web/constants.dart';
-import 'package:spotify_flutter_web/widgets/body/4recommended/1recommend_text_header.dart';
 import 'package:spotify_flutter_web/widgets/sidebar/middle/middle_sidebar.dart';
+
+class AllRecommendations extends StatelessWidget {
+  const AllRecommendations({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        RecommendationText(
+          label: "Recommended",
+          rangi: kTextColor,
+          size: 25,
+        ),
+
+        RecommendationText(
+          label: "Based on what's in this playlist",
+          rangi: kTextMinorColor,
+          size: 14,
+        ),
+        SizedBox(height: 30),
+
+        // Row of Recommendations
+        RowOfRecommendations(
+          imgUrl: "assets/images/artists/joel.jpg",
+          songName: "Wadumu Milele",
+          artistName: "Joel Lwaga",
+          albumName: "Sitabaki Nilivyo (Live in Dar es Salaam, Tanzania)",
+        ),
+        RowOfRecommendations(
+          imgUrl: "assets/images/artists/paul.jpg",
+          songName: "Sijawahi Ona",
+          artistName: "Paul Clement",
+          albumName: "Shabaha (Live in Morogoro, Tanzania)",
+        ),
+        RowOfRecommendations(
+          imgUrl: "assets/images/artists/donnie.jpg",
+          songName: "Great is Your Mercy - Live",
+          artistName: "Donnic McClurkin",
+          albumName: "Donnie Live in London and more...",
+        ),
+        RowOfRecommendations(
+          imgUrl: "assets/images/artists/maverick.jpg",
+          songName: "Fear is not my Future",
+          artistName: "Maverick City Music",
+          albumName: "Kingdom Book One - Live in Los Angeles",
+        ),
+        RowOfRecommendations(
+          imgUrl: "assets/images/artists/ntokozo.jpeg",
+          songName: "We Pray for More",
+          artistName: "Ntokozo Mbambo",
+          albumName: "Moments in Time (Live)",
+        ),
+      ],
+    );
+  }
+}
 
 class RowOfRecommendations extends StatelessWidget {
   final String imgUrl;
@@ -119,6 +175,38 @@ class ArtistsTextColumn extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class RecommendationText extends StatelessWidget {
+  final String label;
+  final Color rangi;
+  final int size;
+
+  const RecommendationText({
+    Key? key,
+    required this.label,
+    required this.size,
+    required this.rangi,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 12.0,
+        right: 12.0,
+        bottom: 12.0,
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+          color: rangi,
+          fontSize: size.toDouble(),
+          fontWeight: rangi == kTextColor ? FontWeight.bold : FontWeight.normal,
+        ),
+      ),
     );
   }
 }
