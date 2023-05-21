@@ -181,7 +181,7 @@ class ArtistsTextColumn extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          songName,
+          songName.length > 20 ? '${songName.substring(0, 20)}...' : songName,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 15,
@@ -190,7 +190,9 @@ class ArtistsTextColumn extends StatelessWidget {
         ),
         const SizedBox(height: 7),
         Text(
-          artistName,
+          artistName.length > 20
+              ? '${artistName.substring(0, 20)}...'
+              : artistName,
           style: const TextStyle(
             fontSize: 12,
             color: kTextMinorColor,
