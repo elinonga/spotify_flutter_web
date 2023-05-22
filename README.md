@@ -14,4 +14,4 @@ This is a clone of the Spotify web app built using Flutter. The app replicates t
 
 ## Screenshot
 
-![Screenshot](screenshot.png)
+![Screenshot](assets/images/readme.png)
