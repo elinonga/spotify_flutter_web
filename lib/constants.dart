@@ -4,6 +4,7 @@ const kBackgroundColor = Color(0xFF000000);
 
 // Size
 const kWidthRow = SizedBox(width: 12);
+const kMidWidth = SizedBox(width: 18);
 const kHeightColumn = SizedBox(height: 15);
 const kMidHeightColumn = SizedBox(height: 30);
 const kBigHeightColumn = SizedBox(height: 50);

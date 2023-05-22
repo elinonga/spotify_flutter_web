@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:spotify_flutter_web/constants.dart';
 import 'package:spotify_flutter_web/widgets/body/4recommended/row_of_recommendations.dart';
-import 'package:spotify_flutter_web/widgets/body/5footer/row_of_footer.dart';
 
 class SongsTableData extends StatelessWidget {
   const SongsTableData({Key? key});
@@ -10,7 +9,7 @@ class SongsTableData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(25.0),
+      padding: const EdgeInsets.all(25.0),
       child: Column(
         children: [
           // Table Title
